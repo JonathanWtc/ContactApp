@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/background_gradiente.xml" value="0.1995" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/style_item.xml" value="0.205" />
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/item_recyclerview.xml" value="0.25" />
       </map>
     </option>
   </component>
