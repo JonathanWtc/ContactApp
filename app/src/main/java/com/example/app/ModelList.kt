@@ -1,5 +1,5 @@
 package com.example.app
 
-data class ModelList(val name: String,
-                     val number:Int) {
+data class ModelList(var name: String,
+                     var number:Int) {
 }

@@ -8,7 +8,10 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContactsAdapter(private val adaptList: List<ModelList>,): RecyclerView.Adapter<ContactsAdapter.ContactHolder>() {
+interface ContactListener {
+    fun onClick(index: Int, model: ModelList)
+}
+class ContactsAdapter(private val adaptList: List<ModelList>, private val contactListener: ContactListener): RecyclerView.Adapter<ContactsAdapter.ContactHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactHolder {
 
@@ -18,6 +21,9 @@ class ContactsAdapter(private val adaptList: List<ModelList>,): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ContactHolder, position: Int) {
         val contact = adaptList[position]
+        holder.itemView.setOnClickListener {
+            contactListener.onClick(position, contact)
+        }
         holder.bind(contact)
     }
 
