@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
     <EditText
-        android:id="@+id/eTxt_addNumber"
+        android:id="@+id/eTxt_addName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTitleAdd" />
 
     <EditText
-        android:id="@+id/eTxt_addName"
+        android:id="@+id/eTxt_addNumber"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -53,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTxt_addNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxt_addName" />
 
     <Button
         android:id="@+id/btnAdd"
@@ -68,7 +68,7 @@
         android:layout_marginHorizontal="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTxt_addName" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxt_addNumber" />
 
     <Button
         android:id="@+id/btnBack"
