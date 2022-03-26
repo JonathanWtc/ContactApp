@@ -12,4 +12,5 @@
     <color name="colorFondoCenter">#048558</color>
     <color name="colorFondoBottom">#1F8A02</color>
     <color name="itemBackground">#48032898</color>
+    <color name="azulHint">#5C021140</color>
 </resources>
