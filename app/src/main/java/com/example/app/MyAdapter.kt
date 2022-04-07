@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MyAdapter(private val contextAdapter: Context, val listaDatos: List<MyListModel>, private val myClick: MyClick) :
+class MyAdapter(
+    private val contextAdapter: Context,
+    val listaDatos: List<MyListModel>,
+    private val myClick: MyClick
+) :
     RecyclerView.Adapter<MyBaseViewHolder<*>>() {
     // Se crea la interface con una funcion que pida indice y nombre
     interface MyClick {
         fun myClickLongItem(index: Int, nombre: String)
+        fun myClickItem(index: Int, model: MyListModel)
     }
+
     //Método donde inflaremos las vistas que va a contener los datos
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyBaseViewHolder<*> {
         return MyViewHolder(
@@ -22,6 +28,7 @@ class MyAdapter(private val contextAdapter: Context, val listaDatos: List<MyList
                 .inflate(R.layout.my_item_recyclerview, parent, false)
         )
     }
+
     //Método quien agarrara la información que le mandamos de la lista y la va poner a cada uno de los elementos.
     // con el formato que inflamos con el onCreateViewHolder.
     override fun onBindViewHolder(holder: MyBaseViewHolder<*>, position: Int) {
@@ -30,10 +37,12 @@ class MyAdapter(private val contextAdapter: Context, val listaDatos: List<MyList
             else -> throw IllegalArgumentException("Se olvido pasar el viewholder en el bind")
         }
     }
+
     //Método que devolverá de la lista de datos la cantidad que tiene que inflar.
     override fun getItemCount(): Int {
         return listaDatos.size
     }
+
     inner class MyViewHolder(itemView: View) : MyBaseViewHolder<MyListModel>(itemView) {
         val txtNombre = itemView.findViewById<TextView>(R.id.txtNombre)
         val txtNumber = itemView.findViewById<TextView>(R.id.txtNumero)
@@ -45,9 +54,13 @@ class MyAdapter(private val contextAdapter: Context, val listaDatos: List<MyList
             txtNombre.text = item.nombre
             txtNumber.text = item.numero.toString()
             //evento tocar largo en item
-            itemView.setOnLongClickListener { myClick.myClickLongItem(position, item.nombre)
+            itemView.setOnLongClickListener {
+                myClick.myClickLongItem(position, item.nombre)
                 return@setOnLongClickListener true
             }
+            //evento click para editar contenido de item
+            val nombres = listaDatos[position]
+            itemView.setOnClickListener{myClick.myClickItem(position, nombres)}
         }
     }
 }
