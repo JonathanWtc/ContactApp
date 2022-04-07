@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorFondoTop">#021C67</color>
+    <color name="colorFondoCenter">#048558</color>
+    <color name="colorFondoBottom">#1F8A02</color>
+    <color name="itemBackground">#48032898</color>
+    <color name="transparente">#00021140</color>
+    <color name="azulHint">#5C021140</color>
+    <color name="fondoItem">#5BB2B2B5</color>
 </resources>
