@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/background_gradiente.xml" value="0.1475" />
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/ic_add_circle.xml" value="0.1475" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/ic_drawable_person.xml" value="0.1475" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/style_button_add.xml" value="0.1645" />
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/drawable/style_item.xml" value="0.1475" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_add_name.xml" value="0.278125" />
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_main.xml" value="0.23055555555555557" />
         <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/my_item_recyclerview.xml" value="0.278125" />
       </map>
