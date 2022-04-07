@@ -9,17 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
-class MyAdapter(private val contextAdapter : Context, val listaDatos : List<MyListModel>):RecyclerView.Adapter<MyBaseViewHolder<*>>(){
+class MyAdapter(private val contextAdapter: Context, val listaDatos: List<MyListModel>, private val myClick: MyClick) :
+    RecyclerView.Adapter<MyBaseViewHolder<*>>() {
+    // Se crea la interface con una funcion que pida indice y nombre
+    interface MyClick {
+        fun myClickLongItem(index: Int, nombre: String)
+    }
     //Método donde inflaremos las vistas que va a contener los datos
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyBaseViewHolder<*> {
-        return MyViewHolder(LayoutInflater.from(contextAdapter).inflate(R.layout.my_item_recyclerview, parent, false))
+        return MyViewHolder(
+            LayoutInflater.from(contextAdapter)
+                .inflate(R.layout.my_item_recyclerview, parent, false)
+        )
     }
-
     //Método quien agarrara la información que le mandamos de la lista y la va poner a cada uno de los elementos.
     // con el formato que inflamos con el onCreateViewHolder.
     override fun onBindViewHolder(holder: MyBaseViewHolder<*>, position: Int) {
-        when(holder){
-            is MyViewHolder -> holder.bind(listaDatos[position],position)
+        when (holder) {
+            is MyViewHolder -> holder.bind(listaDatos[position], position)
             else -> throw IllegalArgumentException("Se olvido pasar el viewholder en el bind")
         }
     }
@@ -27,7 +34,7 @@ class MyAdapter(private val contextAdapter : Context, val listaDatos : List<MyLi
     override fun getItemCount(): Int {
         return listaDatos.size
     }
-    inner class MyViewHolder(itemView : View):MyBaseViewHolder<MyListModel>(itemView){
+    inner class MyViewHolder(itemView: View) : MyBaseViewHolder<MyListModel>(itemView) {
         val txtNombre = itemView.findViewById<TextView>(R.id.txtNombre)
         val txtNumber = itemView.findViewById<TextView>(R.id.txtNumero)
         var img_circle = itemView.findViewById<CircleImageView>(R.id.img_circle)
@@ -37,7 +44,10 @@ class MyAdapter(private val contextAdapter : Context, val listaDatos : List<MyLi
             Glide.with(contextAdapter).load(item.imagen).into(img_circle)
             txtNombre.text = item.nombre
             txtNumber.text = item.numero.toString()
+            //evento tocar largo en item
+            itemView.setOnLongClickListener { myClick.myClickLongItem(position, item.nombre)
+                return@setOnLongClickListener true
+            }
         }
-
     }
 }
