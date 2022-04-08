@@ -3,6 +3,7 @@ package com.example.app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.app.databinding.ActivityEditBinding
 
 class EditActivity : AppCompatActivity() {
@@ -13,21 +14,27 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val index = intent.getIntExtra("position",0)
+        //obtener contenido de la posicion, nombre y numero
+        val index = intent.getIntExtra("position", 0)
         val name = intent.getStringExtra("name")
-        val photo = intent.getStringExtra("url")
+        val number = intent.getIntExtra("number", 0)
 
+        //colocar en editText de editActivity lo obtenido anteriormente
         binding.etxtNameEdit.setText(name)
-        binding.etxtImageEdit.setText(photo)
+        binding.etxtNumberEdit.setText(number.toString())
 
-        binding.btnEdit.setOnClickListener{
-            val intent = Intent()
-            intent.putExtra("INDEX",index)
-            intent.putExtra("NAME", binding.etxtNameEdit.text)
-            intent.putExtra("PHOTO", binding.etxtImageEdit.text)
-            setResult(RESULT_OK, intent)
-            finish()
+        //al dar click poner el index en "INDEX", el etxtNameEdit en "NAME" el contenido de los editText del editActivity
+        binding.btnEdit.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            if (binding.etxtNameEdit.text.isEmpty() || binding.etxtNumberEdit.text.isEmpty()) {
+                Toast.makeText(this, "No puede editar vacio", Toast.LENGTH_SHORT).show()
+            } else {
+                intent.putExtra("INDEX", index)
+                intent.putExtra("NAME", binding.etxtNameEdit.text)
+                intent.putExtra("NUMBER", binding.etxtNumberEdit.text)
+                setResult(RESULT_OK, intent)
+                finish()
+            }
         }
     }
 }
