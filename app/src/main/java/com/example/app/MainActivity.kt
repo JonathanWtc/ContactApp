@@ -16,7 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: DogAdapter
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.svDogs.setOnQueryTextListener(this)
         adapter = DogAdapter(dogImages)
         binding.rvDogs.adapter = adapter
     }
@@ -57,7 +58,24 @@ class MainActivity : AppCompatActivity(){
                     Toast.makeText(this@MainActivity, "Error", Toast.LENGTH_SHORT).show()
                 }
             }
-
+            hidenKeyboard() // llamada de la función dentro de runOnUiThread
         }
+    }
+    //función para esconder el teclado después de la busqueda
+    private fun hidenKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE)as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.viewRoot.windowToken, 0)
+    }
+    //Metodo que le das a buscar al searchView
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        //si la consulta del usuario no es vacio ni nulo, Se llama cuando el usuario envía la consulta.
+        if (!query.isNullOrEmpty()) {
+            searchByName(query.toLowerCase())
+        }
+        return true
+    }
+    //Se llama cuando el usuario cambia el texto de la consulta.
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 }
