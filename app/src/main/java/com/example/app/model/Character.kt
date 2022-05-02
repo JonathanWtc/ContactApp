@@ -2,6 +2,7 @@ package com.example.app.model
 
 //Modelo de: https://rickandmortyapi.com/api/character
 data class Character(
+    val id: String,
     val name: String,
     val status: String,
     val species: String,
