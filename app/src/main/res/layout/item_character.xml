@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/ivCharacter"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="nombre"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvIdHind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="ID:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"/>
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            tools:text="id"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"/>
+
+        <TextView
+            android:id="@+id/tvGenderHind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Genero:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvId"/>
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            tools:text="genero"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvIdHind" />
+
+        <TextView
+            android:id="@+id/tvStatusHind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Status:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvGenderHind"/>
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            tools:text="status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvGender" />
+
+        <TextView
+            android:id="@+id/tvSpeciesHind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Especie:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatusHind"/>
+        <TextView
+            android:id="@+id/tvSpecies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            tools:text="status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+        <TextView
+            android:id="@+id/tvEpisodeHind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Episodios:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpeciesHind"/>
+        <TextView
+            android:id="@+id/tvEpisode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            tools:text="episodios"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecies" />
+
+        <TextView
+            android:id="@+id/tvOriginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ORIGEN:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCharacter"
+            app:layout_constraintBottom_toTopOf="@+id/tvEpisodeList"/>
+        <TextView
+            android:id="@+id/tvNameOrigin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="name Origin"
+            android:textColor="@color/teal_200"
+            android:layout_marginStart="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/ivCharacter"
+            app:layout_constraintBottom_toTopOf="@+id/tvEpisodeList"
+            app:layout_constraintStart_toEndOf="@id/tvOriginTitle"/>
+        <TextView
+            android:id="@+id/tvEpisodeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Episodes"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameOrigin"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
