@@ -39,11 +39,15 @@ class MainActivity : AppCompatActivity() {
         characterAdapter = CharacterAdapter(characterList, object : CharacterAdapter.OnClick{
             // se implementa la fun al darle click
             override fun onClickItem(position: Int, model: Character) {
+                //conviertiendo list a array list
+                val arrayStrings = ArrayList<String>()
+                arrayStrings.addAll(model.episode)
+
                 val intent = (Intent(this@MainActivity, CharacterDetailsActivity::class.java))
                 //intent.putExtra("index", position)
                 intent.putExtra("name", model.name)
                 intent.putExtra("image", model.image)
-                intent.putExtra("episodes", model.episode.toString())
+                intent.putStringArrayListExtra("episodes", arrayStrings)
                 Toast.makeText(this@MainActivity, "Detalle del Personaje", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
