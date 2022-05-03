@@ -12,6 +12,7 @@ import com.example.app.model.Character
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("name", model.name)
                 intent.putExtra("image", model.image)
                 intent.putStringArrayListExtra("episodes", arrayStrings)
+                intent.putExtra("origin", model.origin)
                 Toast.makeText(this@MainActivity, "Detalle del Personaje", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }

@@ -28,7 +28,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivCharacterDetails" />
 
+    <TextView
+        android:id="@+id/tv_name_planet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="name planet"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameDetails" />
 
+    <TextView
+        android:id="@+id/tv_url_planet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="url planet"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_planet" />
 
     <TextView
         android:id="@+id/tvSubTitle"
@@ -39,7 +59,7 @@
         android:textStyle="bold"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_url_planet" />
 
     <TextView
         android:id="@+id/tvEpisodeDetails"

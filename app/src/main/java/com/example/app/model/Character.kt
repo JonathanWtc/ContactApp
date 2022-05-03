@@ -1,5 +1,8 @@
 package com.example.app.model
 
+import android.os.Parcelable
+import java.io.Serializable
+
 //Modelo de: https://rickandmortyapi.com/api/character
 data class Character(
     val id: String,
@@ -15,4 +18,5 @@ data class Character(
 data class Origin(
     val name: String,
     val url: String
-)
+): Serializable  //Averiguar sobre Parcelable y sus diferencias
+

@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.app.adapter.EpisodesAdapter
 import com.example.app.databinding.ActivityCharacterDetailsBinding
+import com.example.app.model.Origin
 
 class CharacterDetailsActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val image = intent.getStringExtra("image")
         val episodes = intent.getStringArrayListExtra("episodes")
+        val origin = intent.getSerializableExtra("origin") as Origin
 
         binding.tvNameDetails.setText(name)
         Glide.with(this).load(image).into(binding.ivCharacterDetails)
@@ -32,5 +34,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
         episodesAdapter.notifyDataSetChanged()
 
 
+        binding.tvNamePlanet.text = origin.name
+        binding.tvUrlPlanet.text = origin.url
     }
 }
