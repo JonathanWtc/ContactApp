@@ -8,8 +8,12 @@ import com.example.app.databinding.ItemCharacterBinding
 import com.example.app.model.Character
 
 //crear adaptador, implementar sus miembros, crear el viewHolder
-class CharacterAdapter(private var characterList: List<Character>) :
+class CharacterAdapter(private var characterList: List<Character>, val onclickListener: OnClick) :
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+
+    interface OnClick{
+        fun onClickItem(position: Int, model: Character)
+    }
 
     //////////////////////////// VIEW HOLDER DE PERSONAJES /////////////////////////////////////////
     inner class CharacterViewHolder(val binding: ItemCharacterBinding) :
@@ -43,6 +47,10 @@ class CharacterAdapter(private var characterList: List<Character>) :
                 Glide.with(itemView.context).load(image).into(binding.ivCharacter);
                 binding.tvEpisode.text = episode.size.toString()
                 binding.tvNameOrigin.text = origin.name
+
+                //Evento click
+                var characterPosition = characterList[position]
+                itemView.setOnClickListener{onclickListener.onClickItem(position, characterPosition)}
             }
         }
     }

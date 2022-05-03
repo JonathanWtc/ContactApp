@@ -1,5 +1,6 @@
 package com.example.app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -34,8 +35,20 @@ class MainActivity : AppCompatActivity() {
         // llamar al metodo que obtendra los personajes
         getCharacters()
 
-        // 3 Adaptar al recyclerView
-        characterAdapter = CharacterAdapter(characterList)
+        // 3 Adaptar al recyclerView                       // se llama al objeto "interface"
+        characterAdapter = CharacterAdapter(characterList, object : CharacterAdapter.OnClick{
+            // se implementa la fun al darle click
+            override fun onClickItem(position: Int, model: Character) {
+                val intent = (Intent(this@MainActivity, CharacterDetailsActivity::class.java))
+                //intent.putExtra("index", position)
+                intent.putExtra("name", model.name)
+                intent.putExtra("image", model.image)
+                intent.putExtra("episodes", model.episode.toString())
+                Toast.makeText(this@MainActivity, "Detalle del Personaje", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+            }
+
+        })
         binding.rvCharacter.adapter = characterAdapter
     }
     // 2 METODO para obtener personajes
