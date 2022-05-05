@@ -14,6 +14,7 @@ class ActivityAddName : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         // al hacer click al botón y los editText no estén vacíos volver al activity principal con los datos agregados
         binding.btnAdd.setOnClickListener() {
             val intent = Intent()

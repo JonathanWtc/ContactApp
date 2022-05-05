@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.app.databinding.ActivityEditBinding
 
 class EditActivity : AppCompatActivity() {
@@ -16,12 +17,14 @@ class EditActivity : AppCompatActivity() {
         setContentView(binding.root)
         //obtener contenido de la posicion, nombre y numero
         val index = intent.getIntExtra("position", 0)
+        val image = intent.getStringExtra("image")
         val name = intent.getStringExtra("name")
         val number = intent.getIntExtra("number", 0)
 
         //colocar en editText de editActivity lo obtenido anteriormente
         binding.etxtNameEdit.setText(name)
         binding.etxtNumberEdit.setText(number.toString())
+        Glide.with(this).load(image).into(binding.ivEdit)
 
         //al dar click poner el index en "INDEX", el etxtNameEdit en "NAME" el contenido de los editText del editActivity
         binding.btnEdit.setOnClickListener {

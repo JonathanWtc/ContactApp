@@ -4,7 +4,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.app.databinding.ActivityMainBinding
@@ -12,7 +11,7 @@ import com.example.app.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var toAdapt: MyAdapter
+    private lateinit var contactAdapter: ContactAdapter
     private val myRequestCode = 1
     private val myRequestCodeEdit = 2
 
@@ -21,33 +20,40 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toAdapt = MyAdapter(this, NameList.names, object : MyAdapter.MyClick {
-            //funcion del interface para eliminar item
-            override fun myClickLongItem(index: Int, nombre: String) {
+        contactAdapter = ContactAdapter(NameList.names, object : ContactAdapter.OnClick {
+
+            //funcion de la interfaz "click largo para eliminar"
+            override fun onClickLongItemDelete(index: Int, nombre: String) {
                 val builder = AlertDialog.Builder(this@MainActivity)
                 builder.setTitle("Eliminar contacto")
                 builder.setMessage("Esta seguro de eliminar a $nombre")
                 builder.setPositiveButton("Si") { dialogInterface: DialogInterface, i: Int ->
                     NameList.names.removeAt(index)
-                    toAdapt.notifyDataSetChanged()
+                    contactAdapter.notifyDataSetChanged()
                 }
                 builder.setNegativeButton("Cancelar") { dialogInterface: DialogInterface, i: Int -> }
                 builder.show()
+
+                // eliminar sin AlertDialog
+                //NameList.names.removeAt(index)
+                //contactAdapter.notifyDataSetChanged()
             }
 
-            //funcion de la intreface para editar item
-            override fun myClickItem(index: Int, model: MyListModel) {
-                Toast.makeText(this@MainActivity, "click para editar item", Toast.LENGTH_SHORT)
+            //funcion de la intrefaz "click para editar"
+            override fun onClickItemEdit(index: Int, model: MyListModel) {
+                Toast.makeText(this@MainActivity, "Editar contacto", Toast.LENGTH_SHORT)
                     .show()
+                // Intentar = pasar de esta actividad a la actividad de edicion
                 val intent = (Intent(this@MainActivity, EditActivity::class.java))
                 //poniendo el index en "posision", el nombre en "name", etc
                 intent.putExtra("position", index)
+                intent.putExtra("image",model.imagen)
                 intent.putExtra("name", model.nombre)
                 intent.putExtra("number", model.numero)
                 startActivityForResult(intent, myRequestCodeEdit)
             }
         })
-        binding.myRecyclerView.adapter = toAdapt
+        binding.myRecyclerView.adapter = contactAdapter
 
         // 2 // Iniciamos setOnClickListener con startActivityForResult e Intent
         // para pasar al segundo activity y esperar el resultado
@@ -72,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                             numero = dataResponseNumber.toInt()
                         )
                     )
-                    toAdapt.notifyItemInserted(NameList.names.size)
+                    contactAdapter.notifyItemInserted(NameList.names.size)
                 }
             } else {
                 Toast.makeText(this, "No se agrego contenido", Toast.LENGTH_SHORT).show()
@@ -89,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                     //igualar la variable al contenido de la lista en el index indicado
                     NameList.names[index].nombre = name
                     NameList.names[index].numero = number
-                    toAdapt.notifyDataSetChanged()
+                    contactAdapter.notifyDataSetChanged()
 
                     Toast.makeText(this, "Se Edito $name con numero $number", Toast.LENGTH_SHORT)
                         .show()
