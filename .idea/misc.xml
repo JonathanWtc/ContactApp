@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_add_contact.xml" value="0.209375" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_add_name.xml" value="0.209375" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_character_details.xml" value="0.2171875" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_edit.xml" value="0.209375" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/item_character.xml" value="0.5" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/item_dog.xml" value="0.1" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/item_episodes.xml" value="0.67" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/item_pokemon.xml" value="0.33" />
+        <entry key="..\:/Users/Jonathan/AndroidStudioProjects/App/app/src/main/res/layout/my_item_recyclerview.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
