@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app.databinding.ItemPokemonBinding
 import com.example.app.model.Pokemon
+import com.example.app.model.PokemonList
 
-class PokemonAdapter(val pokemonList: List<Pokemon>):RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+class PokemonAdapter(private var pokemonList: List<Pokemon>):RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
 
     inner class PokemonViewHolder(val binding: ItemPokemonBinding): RecyclerView.ViewHolder(binding.root) {
@@ -19,9 +20,8 @@ class PokemonAdapter(val pokemonList: List<Pokemon>):RecyclerView.Adapter<Pokemo
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         with(holder){
-            with(pokemonList[position]){
-                binding.tvPokemonName.text = name
-            }
+            binding.tvPokemonName.text = pokemonList[position].name
+            binding.tvPokemonUrl.text = pokemonList[position].url
         }
     }
 

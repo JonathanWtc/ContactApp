@@ -2,6 +2,7 @@ package com.example.app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.app.adapter.PokemonAdapter
@@ -40,9 +41,10 @@ class MainActivity : AppCompatActivity() {
             try {
                 Toast.makeText(this@MainActivity, "Buscando pokemon", Toast.LENGTH_SHORT).show()
                 val response = apiPokemonService.getPokemon()
-                pokemon.addAll(response.resultsPokemon)
+                pokemon.addAll(response.results)
             }catch (e:Exception){
-                Toast.makeText(this@MainActivity, "Error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Error ${e.message}", Toast.LENGTH_SHORT).show()
+                Log.e("error api","${e.message}")
             }
         }
     }
