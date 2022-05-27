@@ -8,7 +8,7 @@ import retrofit2.http.GET
 interface ApiUserService {
 
     @GET("usersFake")
-    fun getUsers(): List<UserDetailsModel>
+    suspend fun getUsers(): List<UserDetailsModel>
 
 //@POST("userFake")
     //fun getUser(): UserDetailsModel

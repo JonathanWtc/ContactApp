@@ -27,6 +27,7 @@ class UserAdapter (private val usersList : List<UserDetailsModel>): RecyclerView
                 binding.tvNickName.text = nickName
             }
         }
+
     }
 
     override fun getItemCount(): Int = usersList.size
