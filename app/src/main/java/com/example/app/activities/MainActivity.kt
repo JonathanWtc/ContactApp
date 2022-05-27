@@ -53,5 +53,11 @@ class MainActivity : AppCompatActivity() {
                 binding.progressCircular.visibility = View.GONE
             }
         }
+
+        viewModel.messageErrorLive.observe(this) {response ->
+            Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
+            binding.progressCircular.visibility = View.GONE
+
+        }
     }
 }
