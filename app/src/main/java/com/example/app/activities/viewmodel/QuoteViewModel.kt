@@ -7,11 +7,11 @@ import com.example.app.activities.model.QuoteProvider
 //Esta clase es la encargada de conectar el modelo con la vista
 class QuoteViewModel : ViewModel() {
     //LiveData nos permite observar los cambios
-    val quoteModel = MutableLiveData<QuoteModel>()
+    val quoteModelLiveData = MutableLiveData<QuoteModel>()
 
     fun randomQuote(){
-        val currentQuote: QuoteModel = QuoteProvider.random()
+        val currentQuote: QuoteModel = QuoteProvider.randomProvider()
         //avisamos a quoteModel(liveData) de los cabios
-        quoteModel.postValue(currentQuote)
+        quoteModelLiveData.postValue(currentQuote)
     }
 }

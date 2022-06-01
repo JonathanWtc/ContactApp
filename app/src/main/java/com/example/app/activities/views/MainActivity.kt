@@ -10,18 +10,19 @@ import com.example.app.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val quoteViewModel : QuoteViewModel by viewModels()
+    private val quoteViewModel: QuoteViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        quoteViewModel.quoteModel.observe(this, Observer {
-            binding.tvQuote.text = it.quote
-            binding.tvAuthor.text = it.author
+        //Observar desde la activity la actualizacion y ponerta en las textView correspondiente
+        quoteViewModel.quoteModelLiveData.observe(this, Observer { updateQuote ->
+            binding.tvQuote.text = updateQuote.quote
+            binding.tvAuthor.text = updateQuote.author
         })
-        binding.viewContainer.setOnClickListener {quoteViewModel.randomQuote() }
+        //Al darle click a la pantalla llamar a la funcion random del quoteViewModel
+        binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
 
     }
 }

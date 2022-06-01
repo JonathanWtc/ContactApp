@@ -2,8 +2,9 @@ package com.example.app.activities.model
 //Aca se muestra el contenido de los datos
 class QuoteProvider {
     companion object {
-        fun random():QuoteModel{
-            val position  = (0..12).random()
+        
+        fun randomProvider():QuoteModel{
+            val position  = (0..11).random()
             return quote[position]
         }
         private val quote = listOf<QuoteModel>(
